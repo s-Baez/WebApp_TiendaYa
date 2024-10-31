@@ -61,5 +61,5 @@ Envía un pull request.
 Licencia
 Este proyecto está licenciado bajo la Licencia MIT.
 
-<div align="center"> <h2>¡Gracias por tu interés!</h2> <p>Para más información, consulta la documentación en el repositorio.</p> </div> ```
+<div align="center"> <h2 style="color:white; ">¡Gracias por tu interés!</h2> <p>Para más información, consulta la documentación en el repositorio.</p> </div> ```
   
