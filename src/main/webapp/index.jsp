@@ -58,7 +58,7 @@
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="productoslista.jsp">Forgot Password?</a>
+                                    <a class="small" href="Inicio.jsp">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
                                     <a class="small" href="registro.jsp">Create an Account!</a>
