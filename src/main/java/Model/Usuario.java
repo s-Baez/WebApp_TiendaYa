@@ -2,16 +2,21 @@ package Model;
 
 public class Usuario {
     private String nombre;
-    private String correo;
+    private String apellido;
+    private String dni;
+    private String email;
     private String password;
     private String rol;
 
-    public Usuario(String nombre, String correo, String password, String rol) {
+    public Usuario() {
         this.nombre = nombre;
-        this.correo = correo;
+        this.apellido = apellido;
+        this.email = email;
+        this.dni = dni;
         this.password = password;
         this.rol = rol;
     }
+
 
     public String getNombre() {
         return nombre;
@@ -21,12 +26,28 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

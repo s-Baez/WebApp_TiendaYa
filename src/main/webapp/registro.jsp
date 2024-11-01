@@ -24,56 +24,71 @@
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-
-    <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
+<style>
+    .form-rol {
+        font-size: .8rem;
+        border-radius: 10rem;
+        height: 47px;
+    }
+</style>
 <body class="bg-gradient-primary">
-
 <div class="container">
-
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
+
             <div class="row">
-                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+
+
+                <hr>
                 <div class="col-lg-7">
                     <div class="p-5">
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                         </div>
-                        <form class="user">
+                        <form class="user" action="RegistroControl" method="post">
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                           placeholder="First Name">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" class="form-control form-control-user" name="nombre" placeholder="Nombre" required>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label for="apellido">Apellido</label>
+                                    <input type="text" id="apellido" class="form-control form-control-user" name="apellido" placeholder="Apellido" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                       placeholder="Email Address">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" id="email" class="form-control form-control-user" name="email" placeholder="Correo Electrónico" required>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label for="rol">Rol</label>
+                                    <select class="form-control form-rol" id="rol" name="rol" required>
+                                        <option value="" disabled selected>Selecciona un rol</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Trabajador">Trabajador</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label for="dni">DNI</label>
+                                    <input type="text" id="dni" class="form-control form-control-user" name="dni" placeholder="DNI" required>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user"
-                                           id="exampleInputPassword" placeholder="Password">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user"
-                                           id="exampleRepeatPassword" placeholder="Repeat Password">
+                                    <label for="password">Contraseña</label>
+                                    <input type="password" id="password" class="form-control form-control-user" name="password" placeholder="Contraseña" required>
                                 </div>
                             </div>
-                            <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                Register Account
-                            </a>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                Registrar Cuenta
+                            </button>
                             <hr>
                             <a href="index.html" class="btn btn-google btn-user btn-block">
-                                <i class="fab fa-google fa-fw"></i> Register with Google
-                            </a>
-                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                <i class="fab fa-google fa-fw"></i> Registrarse con Google
                             </a>
                         </form>
                         <hr>
@@ -81,20 +96,17 @@
                             <a class="small" href="forgot-password.html">Forgot Password?</a>
                         </div>
                         <div class="text-center">
-                            <a class="small" href="login.html">Already have an account? Login!</a>
+                            <a class="small" href="index.jsp">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="js/sb-admin-2.min.js"></script>
-
 </body>
-
 </html>
