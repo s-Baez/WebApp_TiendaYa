@@ -24,6 +24,8 @@
             rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="vendor/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 
@@ -384,17 +386,17 @@
                                     <td><%= producto.getPrecio() %></td>
                                     <td><%= producto.getStock() %></td>
                                     <td><%= producto.getCategoriaId() %></td>
-                                    <td><img src="<%= producto.getImagen() %>" alt="<%= producto.getNombre() %>" style="width: 100px;"></td>
+                                    <td><img src="<%= producto.getImagen() %>" alt="<%= producto.getNombre() %>" style="width: 60px;"></td>
                                     <td>
-                                        <div class="hidden-sm hidden-xs action-buttons">
-                                            <a class="blue" href="#">
-                                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                        <div class="action" style="display: flex;justify-content: space-between;align-items: center; gap: 10px;}">
+                                            <a  class="btnac" href="#" title="Ver">
+                                                <i class="fas fa-search-plus fa-sm"></i>
                                             </a>
-                                            <a class="green" href="#">
-                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                            <a class="btnac" href="#" title="Editar">
+                                                <i class="fas fa-pencil-alt fa-sm"></i>
                                             </a>
-                                            <a class="red" href="#">
-                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                            <a class="btnac" href="#" title="Eliminar">
+                                                <i class="fas fa-trash-alt fa-sm"></i>
                                             </a>
                                         </div>
                                     </td>
