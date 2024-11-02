@@ -1,11 +1,12 @@
 <%@ page import="java.util.List" %>
-<%@ page import="Model.Producto" %>
-<%@ page import="DAO.ProductoDAO" %>
-<%@ page import="Model.Producto" %>
-<%@ page import="DAO.ProductoDAO" %>
+<%@ page import="Model.Venta" %>
+<%@ page import="DAO.VentaDAO" %>
+<%@ page import="Model.Venta" %>
+<%@ page import="DAO.VentaDAO" %>
+
 <%
-  ProductoDAO productoDAO = new ProductoDAO();
-  List<Producto> productoslista = productoDAO.obtenerProductos();
+  VentaDAO ventaDAO = new VentaDAO();
+  List<Venta> ventasLista = ventaDAO.obtenerVentas();
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -23,6 +24,8 @@
           rel="stylesheet">
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link href="vendor/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 
@@ -30,91 +33,122 @@
 
 <div id="wrapper">
 
-  <!------------------------------------ Barra de Accesos ------------------------------------------>
+  <!---------------------------------- Barra de Accesos ------------------------------>
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicio.jsp">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+      <div class="sidebar-brand-text mx-3">TiendaYa!</div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="Inicio.jsp">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span>
+        <span>Inicio</span>
       </a>
     </li>
 
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
-      Interface
+      Trabajador
     </div>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVentas"
+         aria-expanded="true" aria-controls="collapseVentas">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Ventas</span>
+      </a>
+      <div id="collapseVentas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Acciones:</h6>
+          <a class="collapse-item" href="VentaNueva.jsp">Nueva Venta</a>
+          <a class="collapse-item" href="Ventas.jsp">Lista de Ventas</a>
+        </div>
+      </div>
+    </li>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
          aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-fw fa-cog"></i>
-        <span>Components</span>
+        <span>Proveedores</span>
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Components:</h6>
-          <a class="collapse-item" href="buttons.html">Buttons</a>
-          <a class="collapse-item" href="cards.html">Cards</a>
+          <h6 class="collapse-header">Acciones:</h6>
+          <a class="collapse-item" href="NuevoProveedor.jsp">Nuevo Proveedor</a>
+          <a class="collapse-item" href="Proveedores.jsp">Lista de Proveedores</a>
         </div>
       </div>
     </li>
+
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
          aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-wrench"></i>
-        <span>Utilities</span>
+        <span>Categorias</span>
       </a>
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Utilities:</h6>
-          <a class="collapse-item" href="utilities-color.html">Colors</a>
-          <a class="collapse-item" href="utilities-border.html">Borders</a>
-          <a class="collapse-item" href="utilities-animation.html">Animations</a>
-          <a class="collapse-item" href="utilities-other.html">Other</a>
+          <h6 class="collapse-header">Acciones:</h6>
+          <a class="collapse-item" href="CategoriaNueva.jsp">Nueva Categoria</a>
+          <a class="collapse-item" href="Categoria.jsp">Lista de Categorias</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseproducts"
+         aria-expanded="true" aria-controls="collapseproducts">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Productos</span>
+      </a>
+      <div id="collapseproducts" class="collapse" aria-labelledby="headingUtilities"
+           data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Acciones:</h6>
+          <a class="collapse-item" href="productoNuevo.jsp">Nuevo Producto</a>
+          <a class="collapse-item" href="productoslista.jsp">Lista de Productos</a>
         </div>
       </div>
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-      Addons
+      Administrador
     </div>
     <li class="nav-item active">
       <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
          aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
-        <span>Pages</span>
+        <span>Exportar</span>
       </a>
-      <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+      <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Login Screens:</h6>
-          <a class="collapse-item" href="login.html">Login</a>
-          <a class="collapse-item" href="register.html">Register</a>
-          <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-          <div class="collapse-divider"></div>
-          <h6 class="collapse-header">Other Pages:</h6>
-          <a class="collapse-item active" href="404.html">404 Page</a>
-          <a class="collapse-item" href="blank.html">Blank Page</a>
+          <h6 class="collapse-header">Acciones:</h6>
+          <a class="collapse-item" href="utilities-color.html">Lista de Ventas </a>
+          <a class="collapse-item" href="utilities-border.html">Lista de Proveedores</a>
+          <a class="collapse-item" href="utilities-border.html">Lista de Usuarios</a>
+          <a class="collapse-item" href="utilities-border.html">Lista de Productos</a>
+          <a class="collapse-item" href="utilities-border.html">Lista de Categorias</a>
         </div>
       </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="tables.html">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span></a>
+    <li class="nav-item active">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseuser"
+         aria-expanded="true" aria-controls="collapseuser">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Usuarios</span>
+      </a>
+      <div id="collapseuser" class="collapse" aria-labelledby="headingUtilities"
+           data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Acciones:</h6>
+          <a class="collapse-item" href="UsuarioNuevo.jsp">Nuevo Usuario</a>
+          <a class="collapse-item" href="Usuarios.jsp">Lista de usuarios</a>
+        </div>
+      </div>
     </li>
 
     <!-- Divider -->
@@ -333,7 +367,8 @@
         </ul>
 
       </nav>
-      <!-- End of Topbar -->
+      <!---------------------------------- Fin de Barra de Accesos ------------------------------>
+
 
 
       <!------------------------------------------ fin de sidebar ----------------------------->
@@ -342,61 +377,52 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Tablas</h1>
-        <p class="mb-4">Registro de todos los productos de la Empresa Cafe Republica  <a target="_blank"
+        <p class="mb-4">Registro de todas los ventas de la Practi-tienda  Tienda Ya!<a target="_blank"
                                                                                          href="https://datatables.net">Descargar Exel</a>.</p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Ventas</h6>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Tamaño</th>
+                  <th>ID Venta</th>
+                  <th>Código Factura</th>
+                  <th>Número Venta</th>
+                  <th>Fecha</th>
+                  <th>Nombre Producto</th>
                   <th>Precio</th>
-                  <th>Stock</th>
-                  <th>Categoría ID</th>
-                  <th>Imagen</th>
-                  <th>Acciones</th>
+                  <th>Cantidad</th>
+                  <th>Método de Pago</th>
+                  <th>Monto Total</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
-                  if (productoslista == null || productoslista.isEmpty()) {
+                  if (ventasLista == null || ventasLista.isEmpty()) {
                 %>
                 <tr>
-                  <td colspan="8">No hay productos disponibles</td>
+                  <td colspan="9">No hay ventas disponibles</td>
                 </tr>
                 <%
                 } else {
-                  for (Producto producto : productoslista) {
+                  java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                  for (Venta venta : ventasLista) {
                 %>
                 <tr>
-                  <td><%= producto.getId() %></td>
-                  <td><%= producto.getNombre() %></td>
-                  <td><%= producto.getTamano() %></td>
-                  <td><%= producto.getPrecio() %></td>
-                  <td><%= producto.getStock() %></td>
-                  <td><%= producto.getCategoriaId() %></td>
-                  <td><img src="<%= producto.getImagen() %>" alt="<%= producto.getNombre() %>" style="width: 100px;"></td>
-                  <td>
-                    <div class="hidden-sm hidden-xs action-buttons">
-                      <a class="blue" href="#">
-                        <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                      </a>
-                      <a class="green" href="#">
-                        <i class="ace-icon fa fa-pencil bigger-130"></i>
-                      </a>
-                      <a class="red" href="#">
-                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                      </a>
-                    </div>
-                  </td>
+                  <td><%= venta.getIdVenta() %></td>
+                  <td><%= venta.getCodigoFactura() %></td>
+                  <td><%= venta.getNumeroVenta() %></td>
+                  <td><%= sdf.format(java.sql.Date.valueOf(venta.getFecha())) %></td>
+                  <td><%= venta.getNombreProducto() %></td>
+                  <td><%= venta.getPrecio().setScale(2, java.math.RoundingMode.HALF_UP) %></td>
+                  <td><%= venta.getCantidad() %></td>
+                  <td><%= venta.getMetodoPago() %></td>
+                  <td><%= venta.getPrecioTotal() %></td>
                 </tr>
                 <%
                     }
@@ -408,13 +434,10 @@
           </div>
         </div>
 
-      </div>
-    </div>
-
     <footer class="sticky-footer bg-white">
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
-          <span>Copyright  2024</span>
+          <span>Copyright UTP 2024</span>
         </div>
       </div>
     </footer>
@@ -436,7 +459,7 @@
       <div class="modal-body">Selecciona Salir si estas seguro de la accion</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="login.html">Salir</a>
+        <a class="btn btn-primary" href="index.jsp">Salir</a>
       </div>
     </div>
   </div>
@@ -453,6 +476,7 @@
 
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="js/datatables-demo.js"></script>
-</body>
+
+    <hr> </body>
 </html>
 
