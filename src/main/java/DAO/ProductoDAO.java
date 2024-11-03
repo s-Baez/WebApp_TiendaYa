@@ -25,7 +25,7 @@ public class ProductoDAO {
                     precio = rs.getDouble("precio");
                 } catch (SQLException | NumberFormatException e) {
                     System.out.println("Error al convertir el precio para el ID " + id + ": " + e.getMessage());
-                    precio = 0.0; // Asignar un valor por defecto si deseas
+                    precio = 0.0;
                 }
                 String stock = rs.getString("stock");
 

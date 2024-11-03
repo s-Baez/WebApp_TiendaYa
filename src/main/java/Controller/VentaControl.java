@@ -20,7 +20,7 @@ public class VentaControl extends HttpServlet {
 
     @Override
     public void init() {
-        ventaDAO = new VentaDAO(); // Inicializar DAO
+        ventaDAO = new VentaDAO();
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Venta> ventas = ventaDAO.obtenerVentas();
