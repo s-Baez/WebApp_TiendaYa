@@ -40,7 +40,7 @@ public class RegistroControl extends HttpServlet {
 
         if (registroExitoso) {
             request.setAttribute("mensaje", "Registro exitoso. Puedes iniciar sesión.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "Error al registrar el usuario. Intenta de nuevo.");
             request.getRequestDispatcher("registro.jsp").forward(request, response);

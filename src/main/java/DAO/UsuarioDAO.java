@@ -47,7 +47,6 @@ public class UsuarioDAO {
             return false;
         }
     }
-
     public Usuario validarUsuario(String email, String password) {
         String sql = "SELECT * FROM usuario WHERE email = ?";
         try (Connection connection = Conexion.conectar();

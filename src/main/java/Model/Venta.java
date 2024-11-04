@@ -7,7 +7,7 @@ public class Venta {
     private int idVenta;
     private String codigoFactura;
     private int numeroVenta;
-    private LocalDate fecha;  // Cambiado a LocalDate
+    private LocalDate fecha;
     private String nombreProducto;
     private BigDecimal precio;
     private int cantidad;

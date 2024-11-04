@@ -24,7 +24,7 @@ public class IngresoControl extends HttpServlet {
         if (usuario != null) {
             HttpSession session = request.getSession();
             session.setAttribute("usuario", usuario);
-            response.sendRedirect("productoslista.jsp");
+            response.sendRedirect("Inicio.jsp");
         } else {
             request.setAttribute("errorMessage", "Correo o contraseña incorrectos");
             request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -23,7 +23,7 @@ public class ProveedorControl extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Error al cargar la lista de proveedores.");
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            request.getRequestDispatcher("404.jsp").forward(request, response);
         }
     }
 }

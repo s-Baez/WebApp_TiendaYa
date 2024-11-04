@@ -32,38 +32,37 @@
         height: 47px;
     }
 </style>
-<body class="bg-gradient-primary">
-<div class="container">
-    <div class="card o-hidden border-0 shadow-lg my-5">
+<body class="bg-gradient-primary" style="background-image: url('images/fondo1400.png');">
+<div class="container" style="padding-right: 4.5rem;width: 620px;padding-left: 50px;">
+    <div class="col-xl-10 col-lg-12 col-md-9" style="margin-left: 37px;">
+    <div class="card o-hidden border-0 shadow-lg my-5" style="border-radius: 42px;width: 420px;">
         <div class="card-body p-0">
-
-            <div class="row">
-
-
-                <hr>
+            <div class="row1" style="width: 700px;">
                 <div class="col-lg-7">
-                    <div class="p-5" style="width: 400px;" >
+                    <div class="p-5" style="width: 400px;margin-left: 0px;" >
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            <img src="images/tiendayalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;">
                         </div>
+                        <hr style="background-color: #5ad1f5;height: 2px;">
+                        <hr style="background-color: #5ad1f5;height: 2px;">
                         <form class="user" action="RegistroControl" method="post">
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label for="nombre">Nombre</label>
+
                                     <input type="text" id="nombre" class="form-control form-control-user" name="nombre" placeholder="Nombre" required>
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label for="apellido">Apellido</label>
+
                                     <input type="text" id="apellido" class="form-control form-control-user" name="apellido" placeholder="Apellido" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="email">Correo Electrónico</label>
+
                                 <input type="email" id="email" class="form-control form-control-user" name="email" placeholder="Correo Electrónico" required>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <label for="rol">Rol</label>
+
                                     <select class="form-control form-rol" id="rol" name="rol" required>
                                         <option value="" disabled selected>Selecciona un rol</option>
                                         <option value="Administrador">Administrador</option>
@@ -71,35 +70,33 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label for="dni">DNI</label>
+
                                     <input type="text" id="dni" class="form-control form-control-user" name="dni" placeholder="DNI" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label for="password">Contraseña</label>
+
                                     <input type="password" id="password" class="form-control form-control-user" name="password" placeholder="Contraseña" required>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" style="background-color: #5ad1f5;" class="btn btn-primary btn-user btn-block">
                                 Registrar Cuenta
                             </button>
                             <hr>
-                            <a href="index.html" class="btn btn-google btn-user btn-block">
+                            <a href="https://accounts.google.com" style="background-color: #e79a41;;border-color: #6becff;border-radius: 23px;margin-bottom: 12px;" class="btn btn-google btn-user btn-block">
                                 <i class="fab fa-google fa-fw"></i> Registrarse con Google
                             </a>
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="small" href="forgot-password.html">Forgot Password?</a>
-                        </div>
-                        <div class="text-center">
-                            <a class="small" href="index.jsp">Already have an account? Login!</a>
+                            <a class="small" href="index.jsp">Ya tienes una cuenta? Inicia Sesion!</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 <script src="vendor/jquery/jquery.min.js"></script>

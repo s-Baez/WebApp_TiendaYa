@@ -51,12 +51,12 @@
                         <div class="col-lg-6">
                             <div class="p-5" style="width: 400px;margin-left: 0px;" >
                                 <div class="text-center">
-                                    <img src="images/tiendayalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;">
+                                    <img src="images/tiendayalogo.png" alt="logo" class="mb-4" style="width: 200px; height: auto;margin-bottom: 0rem !important;">
                                 </div>
                                 <hr style="background-color: #5ad1f5;height: 2px;">
                                 <hr style="background-color: #5ad1f5;height: 2px;">
-                                <a href="index.html" style="background-color: #e79a41;;border-color: #6becff;border-radius: 23px;margin-bottom: 12px;" class="btn btn-primary btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i></i> Iniciar sesión con Google
+                                <a href="https://accounts.google.com" style="background-color: #e79a41;;border-color: #6becff;border-radius: 23px;margin-bottom: 12px;" class="btn btn-primary btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> Iniciar sesión con Google
                                 </a>
                                 <form class="user" action="IngresoControl" method="POST">
                                     <div class="form-group">

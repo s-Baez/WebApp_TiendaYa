@@ -1,15 +1,21 @@
-
-<%@ page import="java.util.List" %>
-<%@ page import="Model.Producto" %>
-<%@ page import="DAO.ProductoDAO" %>
-<%@ page import="Model.Producto" %>
-<%@ page import="DAO.ProductoDAO" %>
-<%
-    ProductoDAO productoDAO = new ProductoDAO();
-    List<Producto> productoslista = productoDAO.obtenerProductos();
-%>
+<%--
+  Created by IntelliJ IDEA.
+  User: sadit
+  Date: 01/11/2024
+  Time: 5:02
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Model.Ingreso" %>
+<%@ page import="DAO.IngresoDAO" %>
+<%@ page import="Controller.ListaIngresosControl" %>
+<%
+    IngresoDAO ingresoDAO = new IngresoDAO();
+    List<Ingreso> ingresos = ingresoDAO.listarIngresosConNombreProducto();
+%>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -17,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Administrador</title>
+    <title>Ingresos</title>
     <link href="vendor/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -360,64 +366,63 @@
 
 
             <div class="container-fluid">
-
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tablas</h1>
-                <p class="mb-4">Registro de todos los productos de la Empresa Cafe Republica  <a target="_blank"
-                                                                               href="https://datatables.net">Descargar Exel</a>.</p>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h4 class="m-0 font-weight-bold text-primary">Tabla de Ingresos</h4>
+                    </div>
+                    <div class="card-body" style="font-family: cursive; display: flex; align-items: center;">
+                        <div style="flex: 1;">
+                            <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                                CSS bloat and poor page performance. Custom CSS classes are used to create
+                                custom components and custom utility classes.</p>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <img src="images/3.png" alt="Descripción de la imagen" style="width: 200px; height: auto;">
+                        </div>
+                    </div>
+                </div>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Ingresos</h6>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: #ebbe9b;font-family: cursive;">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Tamaño</th>
-                                    <th>Precio</th>
-                                    <th>Stock</th>
-                                    <th>Categoría ID</th>
-                                    <th>Imagen</th>
-                                    <th>Acciones</th>
+                                    <th>ID Ingreso</th>
+                                    <th>Fecha</th>
+                                    <th>Cantidad</th>
+                                    <th>Producto</th>
+                                    <th>ID Proveedor</th>
+                                    <th>ID Usuario</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Total</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <%
-                                    if (productoslista == null || productoslista.isEmpty()) {
+                                    if (ingresos == null || ingresos.isEmpty()) {
                                 %>
                                 <tr>
-                                    <td colspan="8">No hay productos disponibles</td>
+                                    <td colspan="8">No hay ingresos disponibles</td>
                                 </tr>
                                 <%
                                 } else {
-                                    for (Producto producto : productoslista) {
+                                    for (Ingreso ingreso : ingresos) {
                                 %>
                                 <tr>
-                                    <td><%= producto.getId() %></td>
-                                    <td><%= producto.getNombre() %></td>
-                                    <td><%= producto.getTamano() %></td>
-                                    <td><%= producto.getPrecio() %></td>
-                                    <td><%= producto.getStock() %></td>
-                                    <td><%= producto.getCategoriaId() %></td>
-                                    <td><img src="<%= producto.getImagen() %>" alt="<%= producto.getNombre() %>" style="width: 60px;"></td>
-                                    <td>
-                                        <div class="action" style="display: flex;justify-content: space-between;align-items: center; gap: 10px;}">
-                                            <a  class="btnac" href="#" title="Ver">
-                                                <i class="fas fa-search-plus fa-sm"></i>
-                                            </a>
-                                            <a class="btnac" href="#" title="Editar">
-                                                <i class="fas fa-pencil-alt fa-sm"></i>
-                                            </a>
-                                            <a class="btnac" href="#" title="Eliminar">
-                                                <i class="fas fa-trash-alt fa-sm"></i>
-                                            </a>
-                                        </div>
-                                    </td>
+                                    <td><%= ingreso.getIdIngreso() %></td>
+                                    <td><%= ingreso.getFecha() %></td>
+                                    <td><%= ingreso.getCantidad() %></td>
+                                    <td><%= ingreso.getNombreProducto() %></td>
+                                    <td><%= ingreso.getIdProveedor() %></td>
+                                    <td><%= ingreso.getIdUsuario() %></td>
+                                    <td><%= ingreso.getPrecioUnitario() %></td>
+                                    <td><%= ingreso.getTotal() %></td>
                                 </tr>
                                 <%
                                         }
