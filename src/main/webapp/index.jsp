@@ -14,21 +14,50 @@
             rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-primary">
-<div class="container">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    @media (min-width: 1024px) {
+        body {
+            background-image: url('images/fondo1400.png');
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+        body {
+            background-image: url('images/fondo1400.png');
+        }
+    }
+    @media (max-width: 767px) {
+        body {
+            background-image: url('images/fondo1400.png');
+        }
+    }
+</style>
+<body class="bg-gradient-primary" style="background-image: url('images/fondo1400.png');" >
+<div class="container" style="padding-right: 4.5rem;width: 620px;">
     <div class="row justify-content-center">
 
-        <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="col-xl-10 col-lg-12 col-md-9" style="margin-left: 37px;">
 
-            <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card o-hidden border-0 shadow-lg my-5" style="border-radius: 42px;">
                 <div class="card-body p-0">
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                    <div class="row1" style="width: 700px;">
+
                         <div class="col-lg-6">
-                            <div class="p-5">
+                            <div class="p-5" style="width: 400px;margin-left: 0px;" >
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <img src="images/tiendayalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;">
                                 </div>
+                                <hr style="background-color: #5ad1f5;height: 2px;">
+                                <hr style="background-color: #5ad1f5;height: 2px;">
+                                <a href="index.html" style="background-color: #e79a41;;border-color: #6becff;border-radius: 23px;margin-bottom: 12px;" class="btn btn-primary btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i></i> Iniciar sesión con Google
+                                </a>
                                 <form class="user" action="IngresoControl" method="POST">
                                     <div class="form-group">
                                         <input type="email" name="email" class="form-control form-control-user"
@@ -45,23 +74,18 @@
                                             <label class="custom-control-label" for="customCheck">Recordarme</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" style="background-color: #5ad1f5;" class="btn btn-primary btn-user btn-block">
                                         Iniciar Sesión
                                     </button>
-                                    <hr>
-                                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                                        <i class="fab fa-google fa-fw"></i> Iniciar sesión con Google
-                                    </a>
-                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                        <i class="fab fa-facebook-f fa-fw"></i> Iniciar sesión con Facebook
-                                    </a>
                                 </form>
-                                <hr>
+
                                 <div class="text-center">
-                                    <a class="small" href="Inicio.jsp">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small" href="registro.jsp">Create an Account!</a>
+                                    <a class="small" href="Inicio.jsp">Olvidaste tu contraseña?</a>
+                                    <hr>
+                                    <a class="small" >¿No tienes una cuenta?</a>
+                                    <a href="registro.jsp" style="background-color: #e79a41;;border-radius: 23px;" class="btn btn-primary btn-user btn-block">
+                                         Crear Cuenta
+                                    </a>
                                 </div>
                             </div>
                         </div>

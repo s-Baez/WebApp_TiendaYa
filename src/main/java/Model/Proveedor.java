@@ -22,6 +22,16 @@ public class Proveedor {
         this.ruc = ruc;
     }
 
+    public Proveedor() {
+        this.nombre = nombre;
+        this.contacto = contacto;
+        this.telefono = telefono;
+        this.email = email;
+        this.direccion = direccion;
+        this.distrito = distrito;
+        this.ruc = ruc;
+    }
+
     public int getIdProveedor() {
         return idProveedor;
     }

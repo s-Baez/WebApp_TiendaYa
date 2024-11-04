@@ -5,18 +5,17 @@
   Time: 5:02
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Model.Proveedor" %>
 <%@ page import="DAO.ProveedorDAO" %>
-<%@ page import="Model.Proveedor" %>
-<%@ page import="DAO.ProveedorDAO" %>
-
+<%@ page import="Controller.ExpProveedorControl" %>
 <%
     ProveedorDAO proveedorDAO = new ProveedorDAO();
     List<Proveedor> proveedores = ProveedorDAO.obtenerProveedores();
 %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -84,7 +83,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="NuevoProveedor.jsp">Nuevo Proveedor</a>
+                    <a class="collapse-item" href="ProveedorNuevo.jsp">Nuevo Proveedor</a>
                     <a class="collapse-item" href="Proveedores.jsp">Lista de Proveedores</a>
                 </div>
             </div>
@@ -379,9 +378,30 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tablas</h1>
-                <p class="mb-4">Registro de todos los productos de la Empresa Cafe Republica  <a target="_blank"
-                                                                                                 href="https://datatables.net">Descargar Exel</a>.</p>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h4 class="m-0 font-weight-bold text-primary">Tabla de Proveedores</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                            CSS bloat and poor page performance. Custom CSS classes are used to create
+                            custom components and custom utility classes.</p>
+                        <p class="mb-0">Before working with this theme, you should become familiar with the
+                            Bootstrap framework, especially the utility classes.
+
+                        </p>
+                        <hr>
+                        <!-- Form to download Excel -->
+                        <form class="user" action="<c:url value='/ExpProveedorControl' />" method="get">
+                            <button type="submit" class="btn btn-success">Descargar Excel</button>
+                        </form>
+
+                        <!-- Button to download report -->
+                        <a href="<c:url value='/ExpProveedorControl' />" class="btn btn-primary">
+                            <i class="fas fa-download text-white-50"></i> Descargar Reporte
+                        </a>
+                    </div>
+                </div>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
