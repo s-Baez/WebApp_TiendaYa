@@ -356,7 +356,7 @@
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
-        <!-- 404 Error Text -->
+
         <div class="text-center" style="text-align: center !important;display: flex;justify-content: center;align-items: center;flex-direction: column;padding-top: 142px;">
           <div class="lock"></div>
           <div class="message">

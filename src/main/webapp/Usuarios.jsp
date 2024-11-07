@@ -394,7 +394,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Proveedores</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Lista de Usuarios</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -403,45 +403,45 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Contacto</th>
-                                    <th>Teléfono</th>
+                                    <th>Apellido</th>
+                                    <th>DNI</th>
                                     <th>Email</th>
-                                    <th>Dirección</th>
-                                    <th>Distrito</th>
-                                    <th>RUC</th>
+                                    <th>Password</th>
+                                    <th>Rol</th>
+                                    <th>Fecha Creación</th>
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <%
-
-                                    if (proveedores == null || proveedores.isEmpty()) {
+                                    List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
+                                    if (usuarios == null || usuarios.isEmpty()) {
                                 %>
                                 <tr>
-                                    <td colspan="9">No hay proveedores disponibles</td>
+                                    <td colspan="9">No hay usuarios disponibles</td>
                                 </tr>
                                 <%
                                 } else {
-                                    for (Proveedor proveedor : proveedores) {
+                                    for (Usuario usuario : usuarios) {
                                 %>
                                 <tr>
-                                    <td><%= proveedor.getIdProveedor() %></td>
-                                    <td><%= proveedor.getNombre() %></td>
-                                    <td><%= proveedor.getContacto() %></td>
-                                    <td><%= proveedor.getTelefono() %></td>
-                                    <td><%= proveedor.getEmail() %></td>
-                                    <td><%= proveedor.getDireccion() %></td>
-                                    <td><%= proveedor.getDistrito() %></td>
-                                    <td><%= proveedor.getRuc() %></td>
+                                    <td><%= usuario.getId() %></td>
+                                    <td><%= usuario.getNombre() %></td>
+                                    <td><%= usuario.getApellido() %></td>
+                                    <td><%= usuario.getDni() %></td>
+                                    <td><%= usuario.getEmail() %></td>
+                                    <td><%= usuario.getPassword().substring(0, 10) + "..." %></td> <!-- Muestra solo los primeros 10 caracteres de la contraseña -->
+                                    <td><%= usuario.getRol() %></td>
+                                    <td><%= usuario.getFechaCreacion() %></td>
                                     <td>
                                         <div class="action" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-                                            <a class="btnac" href="#" title="Ver">
-                                                <i class="fas fa-search-plus fa-sm"></i>
-                                            </a>
                                             <a class="btnac" href="#" title="Editar">
                                                 <i class="fas fa-pencil-alt fa-sm"></i>
                                             </a>
-                                            <a class="btnac" href="#" title="Eliminar">
+                                            <a class="btnac" href="#" title="Copiar">
+                                                <i class="fas fa-copy fa-sm"></i>
+                                            </a>
+                                            <a class="btnac" href="#" title="Borrar">
                                                 <i class="fas fa-trash-alt fa-sm"></i>
                                             </a>
                                         </div>
