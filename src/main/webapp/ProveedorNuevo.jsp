@@ -18,7 +18,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>404 - Error </title>
+  <title>Nuevo Proveedor</title>
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -127,11 +127,11 @@
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Acciones:</h6>
-          <a class="collapse-item" href="utilities-color.html">Lista de Ventas </a>
-          <a class="collapse-item" href="utilities-border.html">Lista de Proveedores</a>
-          <a class="collapse-item" href="utilities-border.html">Lista de Usuarios</a>
-          <a class="collapse-item" href="utilities-border.html">Lista de Productos</a>
-          <a class="collapse-item" href="utilities-border.html">Lista de Categorias</a>
+          <a class="collapse-item" href="SinAcceso.jsp">Lista de Ventas </a>
+          <a class="collapse-item" href="SinAcceso.jsp">Lista de Proveedores</a>
+          <a class="collapse-item" href="SinAcceso.jsp">Lista de Usuarios</a>
+          <a class="collapse-item" href="SinAcceso.jsp">Lista de Productos</a>
+          <a class="collapse-item" href="SinAcceso.jsp">Lista de Categorias</a>
         </div>
       </div>
     </li>
@@ -145,8 +145,8 @@
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Acciones:</h6>
-          <a class="collapse-item" href="UsuarioNuevo.jsp">Nuevo Usuario</a>
-          <a class="collapse-item" href="Usuarios.jsp">Lista de usuarios</a>
+          <a class="collapse-item" href="SinAcceso.jsp">Nuevo Usuario</a>
+          <a class="collapse-item" href="SinAcceso.jsp">Lista de usuarios</a>
         </div>
       </div>
     </li>

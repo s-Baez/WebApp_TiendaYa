@@ -127,11 +127,11 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Lista de Ventas </a>
-                    <a class="collapse-item" href="utilities-border.html">Lista de Proveedores</a>
-                    <a class="collapse-item" href="utilities-border.html">Lista de Usuarios</a>
-                    <a class="collapse-item" href="utilities-border.html">Lista de Productos</a>
-                    <a class="collapse-item" href="utilities-border.html">Lista de Categorias</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Ventas </a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Proveedores</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Usuarios</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Productos</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Categorias</a>
                 </div>
             </div>
         </li>
@@ -145,8 +145,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="UsuarioNuevo.jsp">Nuevo Usuario</a>
-                    <a class="collapse-item" href="Usuarios.jsp">Lista de usuarios</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Nuevo Usuario</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de usuarios</a>
                 </div>
             </div>
         </li>
@@ -363,7 +363,7 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Tablas</h1>
-                <p class="mb-4">Registro de todos los productos de la Empresa Cafe Republica  <a target="_blank"
+                <p class="mb-4">Registro de todos los productos de la Empresa Tienda Ya  <a target="_blank"
                                                                                href="https://datatables.net">Descargar Exel</a>.</p>
 
                 <!-- DataTales Example -->

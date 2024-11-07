@@ -133,11 +133,11 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Lista de Ventas </a>
-                    <a class="collapse-item" href="utilities-border.html">Lista de Proveedores</a>
-                    <a class="collapse-item" href="utilities-border.html">Lista de Usuarios</a>
-                    <a class="collapse-item" href="utilities-border.html">Lista de Productos</a>
-                    <a class="collapse-item" href="utilities-border.html">Lista de Categorias</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Ventas </a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Proveedores</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Usuarios</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Productos</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Categorias</a>
                 </div>
             </div>
         </li>
@@ -151,8 +151,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="UsuarioNuevo.jsp">Nuevo Usuario</a>
-                    <a class="collapse-item" href="Usuarios.jsp">Lista de usuarios</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Nuevo Usuario</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de usuarios</a>
                 </div>
             </div>
         </li>
@@ -377,10 +377,6 @@
                         <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
                             CSS bloat and poor page performance. Custom CSS classes are used to create
                             custom components and custom utility classes.</p>
-                        <p class="mb-0">Before working with this theme, you should become familiar with the
-                            Bootstrap framework, especially the utility classes.
-
-                        </p>
                         <hr>
                         <!-- Form to download Excel -->
                         <form class="user" action="<c:url value='/ExpProveedorControl' />" method="get">

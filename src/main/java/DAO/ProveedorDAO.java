@@ -57,6 +57,7 @@ public class ProveedorDAO {
 
         } catch (SQLException e) {
             logger.error("Error al registrar proveedor: " + e.getMessage(), e);
+            e.printStackTrace();
             return false;
         }
     }
