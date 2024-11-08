@@ -56,7 +56,6 @@ Para optimizar la eficiencia y funcionalidad del proyecto, se han realizado prue
 ## 🔒 Consideraciones de Seguridad
 
 Se han incorporado medidas de seguridad para el tratamiento de la información en el sistema:
-- **Validaciones en el lado del servidor**: Utilizando Google Guava y otras técnicas de validación para prevenir ataques de inyección y manipulación de datos.
 - **Control de acceso y autenticación**: Restricciones en las **JSPs** y controladores para asegurar que solo los usuarios autenticados accedan a ciertas funcionalidades.
 - **Gestión de excepciones**: Con **Logback**, los eventos y errores se registran sin exponer información sensible en la consola.
 
