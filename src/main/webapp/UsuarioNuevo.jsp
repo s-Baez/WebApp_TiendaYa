@@ -26,7 +26,7 @@
 
 
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link rel="icon" href="images/1.png" type="image/x-icon">
 </head>
 
 <body id="page-top">
@@ -92,8 +92,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="IngresoNuevo.jsp">Nueva Categoria</a>
-                    <a class="collapse-item" href="Ingreso.jsp">Lista de Categorias</a>
+                    <a class="collapse-item" href="IngresoNuevo.jsp">Nuevo Ingresos</a>
+                    <a class="collapse-item" href="Ingreso.jsp">Lista de Ingresos</a>
                 </div>
             </div>
         </li>
@@ -130,7 +130,7 @@
                     <a class="collapse-item" href="SinAcceso.jsp">Lista de Proveedores</a>
                     <a class="collapse-item" href="SinAcceso.jsp">Lista de Usuarios</a>
                     <a class="collapse-item" href="SinAcceso.jsp">Lista de Productos</a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Categorias</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Ingresos</a>
                 </div>
             </div>
         </li>
@@ -365,15 +365,58 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
+                <div class="container mt-5" style="max-width: 600px;">
+                    <div class="card shadow">
+                        <div class="card-header" style="background-color: #FFA25B; color: white;">
+                            <h4 class="m-0">Registrar Usuario</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="RegistrarUsuarioControl" method="post">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text"  name="nombre" class="form-control" placeholder="Nombre" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="apellido">Apellido:</label>
+                                        <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" required>
+                                    </div>
+                                </div>
 
-                <div class="text-center">
-                    <div class="error mx-auto" data-text="404">404</div>
-                    <p class="lead text-gray-800 mb-5">Page Not Found</p>
-                    <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                    <a href="index.html">&larr; Back to Dashboard</a>
+                                <div class="form-group">
+                                    <label for="email">Correo Electrónico:</label>
+                                    <input type="email"  name="email" class="form-control" placeholder="Correo Electrónico" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="rol">Rol:</label>
+                                    <select id="rol" name="rol" class="form-control" required>
+                                        <option value="" disabled selected>Seleccione un rol</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Trabajador">Trabajador</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dni">DNI:</label>
+                                    <input type="text" id="dni" name="dni" class="form-control" placeholder="DNI" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Contraseña:</label>
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-block" style="background-color: #FFA25B; color: white;">Registrar Usuario</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+            <!-- /.container-fluid -->
+
+
             <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->

@@ -27,7 +27,7 @@
 
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+  <link rel="icon" href="images/1.png" type="image/x-icon">
 </head>
 
 <body id="page-top">
@@ -93,8 +93,8 @@
            data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Acciones:</h6>
-          <a class="collapse-item" href="IngresoNuevo.jsp">Nueva Categoria</a>
-          <a class="collapse-item" href="Ingreso.jsp">Lista de Categorias</a>
+          <a class="collapse-item" href="IngresoNuevo.jsp">Nueva Ingreso</a>
+          <a class="collapse-item" href="Ingreso.jsp">Lista de Ingresos</a>
         </div>
       </div>
     </li>
@@ -131,7 +131,7 @@
           <a class="collapse-item" href="SinAcceso.jsp">Lista de Proveedores</a>
           <a class="collapse-item" href="SinAcceso.jsp">Lista de Usuarios</a>
           <a class="collapse-item" href="SinAcceso.jsp">Lista de Productos</a>
-          <a class="collapse-item" href="SinAcceso.jsp">Lista de Categorias</a>
+          <a class="collapse-item" href="SinAcceso.jsp">Lista de Ingresos</a>
         </div>
       </div>
     </li>

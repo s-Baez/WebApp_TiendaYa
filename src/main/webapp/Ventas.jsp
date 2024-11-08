@@ -26,7 +26,7 @@
   <link href="vendor/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+  <link rel="icon" href="images/1.png" type="image/x-icon">
 </head>
 
 <body id="page-top">
@@ -130,7 +130,7 @@
           <a class="collapse-item" href="SinAcceso.jsp">Lista de Proveedores</a>
           <a class="collapse-item" href="SinAcceso.jsp">Lista de Usuarios</a>
           <a class="collapse-item" href="SinAcceso.jsp">Lista de Productos</a>
-          <a class="collapse-item" href="SinAcceso.jsp">Lista de Categorias</a>
+          <a class="collapse-item" href="SinAcceso.jsp">Lista de Ingresos</a>
         </div>
       </div>
     </li>
