@@ -34,7 +34,6 @@ public class UsuarioDAO {
 
         try (Connection connection = Conexion.conectar();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
-
             stmt.setString(1, usuario.getNombre());
             stmt.setString(2, usuario.getApellido());
             stmt.setString(3, usuario.getDni());
@@ -42,9 +41,7 @@ public class UsuarioDAO {
             String hashedPassword = hashPassword(usuario.getPassword());
             stmt.setString(5, hashedPassword);
             stmt.setString(6, usuario.getRol());
-
             return stmt.executeUpdate() > 0;
-
         } catch (SQLException e) {
             System.err.println("Error al registrar usuario: " + e.getMessage());
             return false;

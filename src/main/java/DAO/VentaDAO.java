@@ -15,11 +15,9 @@ public class VentaDAO {
         String sql = "SELECT v.id_venta, v.codigo_factura, v.numero_venta, v.PrecioTotal, v.fecha, "
                 + "p.nombre AS nombre_producto, p.precio, v.cantidad, v.metodo_pago "
                 + "FROM Ventas v JOIN productos p ON v.id_producto = p.id";
-
         try (Connection con = Conexion.conectar();
              PreparedStatement stmt = con.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
-
             while (rs.next()) {
                 Venta venta = new Venta();
                 venta.setIdVenta(rs.getInt("id_venta"));
@@ -38,7 +36,6 @@ public class VentaDAO {
 
             e.printStackTrace();
         }
-
         return ventas;
     }
 }

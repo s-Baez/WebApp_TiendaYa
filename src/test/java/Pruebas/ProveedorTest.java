@@ -1,20 +1,14 @@
 package Pruebas;
-
 import Model.Proveedor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class ProveedorTest {
-
     private Proveedor proveedor;
-
     @BeforeEach
     public void setUp() {
         proveedor = new Proveedor();
     }
-
     @Test
     public void testCrearProveedor() {
         proveedor.setIdProveedor(1);
@@ -25,7 +19,6 @@ public class ProveedorTest {
         proveedor.setDireccion("Av. Principal 123");
         proveedor.setDistrito("Lima");
         proveedor.setRuc("12345678901");
-
         assertEquals(1, proveedor.getIdProveedor());
         assertEquals("Proveedora S.A.", proveedor.getNombre());
         assertEquals("Juan Pérez", proveedor.getContacto());

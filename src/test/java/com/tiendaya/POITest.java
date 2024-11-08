@@ -17,7 +17,6 @@ public class POITest {
         headerRow.createCell(6).setCellValue("Precio Unitario");
         headerRow.createCell(7).setCellValue("Total");
 
-        // formato para realizar el llenado de datos correctamente
         Row dataRow = sheet.createRow(1);
         dataRow.createCell(0).setCellValue(1);
         dataRow.createCell(1).setCellValue("2024-11-07");

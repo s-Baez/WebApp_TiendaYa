@@ -44,7 +44,6 @@ public class ProveedorDAO {
 
         try (Connection connection = Conexion.conectar();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
-
             stmt.setString(1, proveedor.getNombre());
             stmt.setString(2, proveedor.getContacto());
             stmt.setString(3, proveedor.getTelefono());
@@ -52,9 +51,7 @@ public class ProveedorDAO {
             stmt.setString(5, proveedor.getDireccion());
             stmt.setString(6, proveedor.getDistrito());
             stmt.setString(7, proveedor.getRuc());
-
             return stmt.executeUpdate() > 0;
-
         } catch (SQLException e) {
             logger.error("Error al registrar proveedor: " + e.getMessage(), e);
             e.printStackTrace();

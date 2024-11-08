@@ -67,21 +67,15 @@ public class ApacheCommonsIngresoTest {
     }
     public static void main(String[] args) throws ParseException {
         ApacheCommonsIngresoTest test = new ApacheCommonsIngresoTest();
-
-
         Map<String, Object> ingreso = test.crearIngreso(4, "2024-11-10", 10, 104, 204, 304, 25.0);
         System.out.println("Ingreso creado: " + ingreso);
-
         List<Map<String, Object>> ingresos = test.obtenerIngresosDePrueba();
         System.out.println("Ingresos de prueba:");
         test.mostrarIngreso(ingresos);
-
         boolean existe = test.verificarSiIngresoExiste(ingresos, 2);
         System.out.println("¿Ingreso con ID 2 existe? " + existe);
-
         Date nuevaFecha = test.sumarDiasAFecha("2024-11-07", 5);
         System.out.println("Nueva fecha sumando 5 días: " + nuevaFecha);
-
         double totalRedondeado = test.redondearTotal((double) ingreso.get("total"));
         System.out.println("Total redondeado: " + totalRedondeado);
     }
