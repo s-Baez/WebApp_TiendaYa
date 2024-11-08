@@ -373,15 +373,14 @@
                     </div>
                     <div class="card-body" style="font-family: cursive; display: flex; align-items: center;">
                         <div style="flex: 1;">
-                            <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                CSS bloat and poor page performance. Custom CSS classes are used to create
-                                custom components and custom utility classes.</p>
+                            <p>En TiendaYa, mantenemos un control estricto sobre los ingresos de inventarios para asegurar que nuestros productos siempre estén disponibles para satisfacer las demandas de nuestros clientes. Cada vez que un nuevo lote de mercancía llega a nuestro almacén, registramos de manera precisa los detalles, como la fecha de ingreso, el nombre del producto, la cantidad recibida y el valor total del lote.</p>
                         </div>
                         <div style="margin-left: 20px;">
                             <img src="images/3.png" alt="Descripción de la imagen" style="width: 200px; height: auto;">
                         </div>
                     </div>
                 </div>
+                <!-- div de concepto -->
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">

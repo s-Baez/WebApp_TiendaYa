@@ -371,24 +371,18 @@
                 <!-- Page Heading -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h4 class="m-0 font-weight-bold text-primary">Tabla de Proveedores</h4>
+                        <h4 class="m-0 font-weight-bold text-primary">Tabla de proveedores</h4>
                     </div>
-                    <div class="card-body">
-                        <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                            CSS bloat and poor page performance. Custom CSS classes are used to create
-                            custom components and custom utility classes.</p>
-                        <hr>
-                        <!-- Form to download Excel -->
-                        <form class="user" action="<c:url value='/ExpProveedorControl' />" method="get">
-                            <button type="submit" class="btn btn-success">Descargar Excel</button>
-                        </form>
-
-                        <!-- Button to download report -->
-                        <a href="<c:url value='/ExpProveedorControl' />" class="btn btn-primary">
-                            <i class="fas fa-download text-white-50"></i> Descargar Reporte
-                        </a>
+                    <div class="card-body" style="font-family: cursive; display: flex; align-items: center;">
+                        <div style="flex: 1;">
+                            <p>En esta sección, se detallan los proveedores clave de TiendaYa, quienes nos suministran los productos que ofrecemos a nuestros clientes. Aquí se puede encontrar información relevante sobre cada proveedor, como su nombre, los productos que suministran y sus condiciones de entrega. Mantener un registro organizado de nuestros proveedores nos permite asegurar la calidad de los productos, optimizar los tiempos de entrega y establecer relaciones comerciales efectivas. Gracias a este control, TiendaYa puede ofrecer una variedad de productos de alta calidad y con tiempos de reposición eficientes.</p>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <img src="images/7.png" alt="Descripción de la imagen" style="width: 200px; height: auto;">
+                        </div>
                     </div>
                 </div>
+                <!-- div de concepto -->
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">

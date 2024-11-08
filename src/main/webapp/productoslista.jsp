@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Administrador</title>
+    <title>Productos</title>
     <link href="vendor/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -362,9 +362,22 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tablas</h1>
-                <p class="mb-4">Registro de todos los productos de la Empresa Tienda Ya  <a target="_blank"
-                                                                               href="https://datatables.net">Descargar Exel</a>.</p>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h4 class="m-0 font-weight-bold text-primary">Tabla de Productos</h4>
+                    </div>
+                    <div class="card-body" style="font-family: cursive; display: flex; align-items: center;">
+                        <div style="flex: 1;">
+                            <p>Esta sección muestra los productos disponibles en el inventario de TiendaYa, incluyendo detalles como el nombre del producto, la cantidad disponible y el valor total. Aquí podrás visualizar los artículos más recientes ingresados a nuestro sistema, lo que garantiza que los productos siempre estén actualizados y listos para ser vendidos.
+
+                            </p>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <img src="images/4.png" alt="Descripción de la imagen" style="width: 200px; height: auto;">
+                        </div>
+                    </div>
+                </div>
+                <!-- div de concepto -->
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">

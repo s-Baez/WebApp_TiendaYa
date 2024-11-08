@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class UsuarioDAO {
     private String hashPassword(String password) {
@@ -70,4 +73,33 @@ public class UsuarioDAO {
             e.printStackTrace();
         }
         return null;
-}}
+    }
+    public List<Usuario> listarUsuarios() {
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        String sql = "SELECT * FROM usuario";
+
+        try (Connection connection = Conexion.conectar();
+             PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+                usuario.setDni(rs.getString("dni"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setPassword(rs.getString("password"));
+                usuario.setRol(rs.getString("rol"));
+                listaUsuarios.add(usuario);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al listar usuarios: " + e.getMessage());
+        }
+
+        return listaUsuarios;
+    }
+
+
+
+}

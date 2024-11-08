@@ -17,7 +17,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Administrador</title>
+  <title>Ventas</title>
   <link href="vendor/all.min.css" rel="stylesheet" type="text/css">
   <link
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -364,10 +364,20 @@
       <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tablas</h1>
-        <p class="mb-4">Registro de todas los ventas de la Practi-tienda  Tienda Ya!<a target="_blank"
-                                                                                         href="https://datatables.net">Descargar Exel</a>.</p>
-
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Tabla de Ventas</h4>
+          </div>
+          <div class="card-body" style="font-family: cursive; display: flex; align-items: center;">
+            <div style="flex: 1;">
+              <p>En esta sección se presenta el registro detallado de todas las ventas realizadas en TiendaYa. Aquí podrás consultar información relevante de cada transacción, como la fecha de la venta, el producto vendido, la cantidad y el precio total . Mantener un seguimiento detallado de las ventas es esencial para evaluar el rendimiento del negocio, gestionar los niveles de inventario y realizar análisis de tendencias de consumo.</p>
+            </div>
+            <div style="margin-left: 20px;">
+              <img src="images/9.png" alt="Descripción de la imagen" style="width: 200px; height: auto;">
+            </div>
+          </div>
+        </div>
+        <!-- div de concepto -->
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">

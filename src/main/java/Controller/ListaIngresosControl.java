@@ -6,7 +6,6 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
 public class ListaIngresosControl extends HttpServlet {
 
     @Override

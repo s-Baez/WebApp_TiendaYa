@@ -1,19 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: sadit
-  Date: 01/11/2024
   Time: 5:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Model.Proveedor" %>
-<%@ page import="DAO.ProveedorDAO" %>
-<%@ page import="Controller.ExpProveedorControl" %>
+<%@ page import="Model.UsuarioData" %>
+<%@ page import="DAO.UsuarioDataDAO" %>
+<%@ page import="Controller.ListaUsuariosControl" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%
-    ProveedorDAO proveedorDAO = new ProveedorDAO();
-    List<Proveedor> proveedores = ProveedorDAO.obtenerProveedores();
+
+    UsuarioDataDAO usuarioDataDAO = new UsuarioDataDAO();
+    List<UsuarioData> usuariosLista = UsuarioDataDAO.listarUsuarios();
 %>
 
 <html lang="en">
@@ -23,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Proveedores</title>
+    <title>Usuarios</title>
     <link href="vendor/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -368,30 +369,19 @@
                 <!-- Page Heading -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h4 class="m-0 font-weight-bold text-primary">Tabla de Proveedores</h4>
+                        <h4 class="m-0 font-weight-bold text-primary">Tabla de Usuarios</h4>
                     </div>
-                    <div class="card-body">
-                        <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                            CSS bloat and poor page performance. Custom CSS classes are used to create
-                            custom components and custom utility classes.</p>
-                        <p class="mb-0">Before working with this theme, you should become familiar with the
-                            Bootstrap framework, especially the utility classes.
-
-                        </p>
-                        <hr>
-                        <!-- Form to download Excel -->
-                        <form class="user" action="<c:url value='/ExpProveedorControl' />" method="get">
-                            <button type="submit" class="btn btn-success">Descargar Excel</button>
-                        </form>
-
-                        <!-- Button to download report -->
-                        <a href="<c:url value='/ExpProveedorControl' />" class="btn btn-primary">
-                            <i class="fas fa-download text-white-50"></i> Descargar Reporte
-                        </a>
+                    <div class="card-body" style="font-family: cursive; display: flex; align-items: center;">
+                        <div style="flex: 1;">
+                            <p>Esta sección presenta a los usuarios que tienen acceso al gestor de inventarios de TiendaYa. Cada usuario registrado cuenta con permisos específicos para gestionar, actualizar y consultar el inventario, asegurando que solo las personas autorizadas puedan realizar modificaciones. La correcta administración de estos accesos es clave para mantener la seguridad y el control dentro del sistema, evitando errores y accesos no deseados.</p>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <img src="images/8.png" alt="Descripción de la imagen" style="width: 200px; height: auto;">
+                        </div>
                     </div>
                 </div>
+                <!-- div de concepto -->
 
-                <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Lista de Usuarios</h6>
@@ -406,7 +396,6 @@
                                     <th>Apellido</th>
                                     <th>DNI</th>
                                     <th>Email</th>
-                                    <th>Password</th>
                                     <th>Rol</th>
                                     <th>Fecha Creación</th>
                                     <th>Acciones</th>
@@ -414,15 +403,14 @@
                                 </thead>
                                 <tbody>
                                 <%
-                                    List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
-                                    if (usuarios == null || usuarios.isEmpty()) {
+                                    if (usuariosLista == null || usuariosLista.isEmpty()) {
                                 %>
                                 <tr>
-                                    <td colspan="9">No hay usuarios disponibles</td>
+                                    <td colspan="8">No hay usuarios disponibles</td>
                                 </tr>
                                 <%
                                 } else {
-                                    for (Usuario usuario : usuarios) {
+                                    for (UsuarioData usuario : usuariosLista) {
                                 %>
                                 <tr>
                                     <td><%= usuario.getId() %></td>
@@ -430,9 +418,8 @@
                                     <td><%= usuario.getApellido() %></td>
                                     <td><%= usuario.getDni() %></td>
                                     <td><%= usuario.getEmail() %></td>
-                                    <td><%= usuario.getPassword().substring(0, 10) + "..." %></td> <!-- Muestra solo los primeros 10 caracteres de la contraseña -->
                                     <td><%= usuario.getRol() %></td>
-                                    <td><%= usuario.getFechaCreacion() %></td>
+                                    <td><%= usuario.getFechacreacion() != null ? usuario.getFechacreacion() : "N/A" %></td>
                                     <td>
                                         <div class="action" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                                             <a class="btnac" href="#" title="Editar">

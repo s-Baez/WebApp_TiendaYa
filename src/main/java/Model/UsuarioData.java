@@ -1,28 +1,36 @@
 package Model;
 
-public class Usuario {
+import java.sql.Timestamp;
+
+public class UsuarioData {
+    private int id;
     private String nombre;
     private String apellido;
     private String dni;
     private String email;
     private String password;
     private String rol;
+    private Timestamp fechacreacion;
 
-    public Usuario() {
+    public UsuarioData() {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.dni = dni;
         this.password = password;
         this.rol = rol;
+        this.fechacreacion = fechacreacion;
     }
-    public Usuario(String nombre, String apellido, String dni, String email, String password, String rol) {
+    public UsuarioData(Integer id, String nombre, String apellido, String dni, String email, String password, String rol,Timestamp fechacreacion) {
+        this.id =id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
         this.password = password;
         this.rol = rol;
+        this.fechacreacion = fechacreacion;
     }
 
     public String getNombre() {
@@ -71,5 +79,21 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Timestamp getFechacreacion() {
+        return fechacreacion;
+    }
+
+    public void setFechacreacion(Timestamp fechacreacion) {
+        this.fechacreacion = fechacreacion;
     }
 }
