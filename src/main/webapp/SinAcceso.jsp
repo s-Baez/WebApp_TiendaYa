@@ -361,9 +361,9 @@
         <div class="text-center" style="text-align: center !important;display: flex;justify-content: center;align-items: center;flex-direction: column;padding-top: 142px;">
           <div class="lock"></div>
           <div class="message">
-            <h1>Access to this page is restricted</h1>
-            <p>Please check with the site admin if you believe this is a mistake.</p>
-            <a href="index.html">&larr; Back to Dashboard</a>
+            <h1>Acceso a esta funcion esta limitado</h1>
+            <p>Consulta con un Administrador si crees que hay un error.</p>
+            <a href="inicio.html">&larr; Volver al inicio</a>
           </div>
         </div>
 
