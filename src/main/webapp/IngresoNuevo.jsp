@@ -63,7 +63,7 @@
             <div id="collapseVentas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="VentaNueva.jsp">Nueva Venta</a>
+
                     <a class="collapse-item" href="Ventas.jsp">Lista de Ventas</a>
                 </div>
             </div>
