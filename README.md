@@ -96,4 +96,4 @@ http://localhost:8080/
 Este proyecto es una implementación práctica de principios avanzados de desarrollo de software, integrando una arquitectura modular, pruebas unitarias, librerías de soporte y control de versiones. El sistema cumple con los requisitos establecidos, proporcionando una solución robusta, segura y escalable para la gestión de inventarios.
 
 <div align="center"> <h2 style="color:white; ">¡Gracias por tu interés!</h2> <p>Para más información, consulta la documentación en el repositorio.</p> </div> ```
-  
+  [Mira este video de la version Aplicaciòn Web en YouTube](https://www.youtube.com/watch?v=YYIENkK9QYc&ab_channel=baez)
