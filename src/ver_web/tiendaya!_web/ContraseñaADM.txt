@@ -1,0 +1,2 @@
+Usuario: Administrador
+Clave: Administrador
