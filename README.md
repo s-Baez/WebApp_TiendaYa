@@ -1,4 +1,4 @@
-# 📦 Proyecto:Gestor para la cadena de mini-market PractiYa! - Grupo 8
+# 📦 Proyecto:Gestor para la cadena de mini-market Tienda-Ya! - Grupo 8
 
 ### Descripción del Proyecto
 Este proyecto es un sistema de gestión de inventario desarrollado para **resolver los desafíos de TiendaYa en la gestión de inventarios**. La empresa enfrenta problemas críticos debido a la dependencia de métodos tradicionales que resultan en errores humanos, falta de visibilidad en tiempo real y costos operativos elevados. Estos problemas generan ineficiencias, sobrecarga en el almacenamiento y una planificación inadecuada, lo que afecta directamente la rentabilidad y la satisfacción del cliente. 
