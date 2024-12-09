@@ -17,13 +17,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registro</title>
+    <title>Registro Republica Café</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="icon" href="images/1.png" type="image/x-icon">
+    <link rel="icon" href="images/homeware.png" type="image/x-icon">
 </head>
 <style>
     .form-rol {
@@ -32,7 +32,7 @@
         height: 47px;
     }
 </style>
-<body class="bg-gradient-primary" style="background-image: url('images/fondo1400.png');">
+<body class="bg-gradient-primary" style="background-image: url('images/republicafondo.png');">
 <div class="container" style="padding-right: 4.5rem;width: 620px;padding-left: 50px;">
     <div class="col-xl-10 col-lg-12 col-md-9" style="margin-left: 37px;">
     <div class="card o-hidden border-0 shadow-lg my-5" style="border-radius: 42px;width: 420px;">
@@ -41,10 +41,10 @@
                 <div class="col-lg-7">
                     <div class="p-5" style="width: 400px;margin-left: 0px;" >
                         <div class="text-center">
-                            <img src="images/tiendayalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;">
+                            <img src="images/republicalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;">
                         </div>
-                        <hr style="background-color: #5ad1f5;height: 2px;">
-                        <hr style="background-color: #5ad1f5;height: 2px;">
+                        <hr style="background-color: #a32626;height: 2px;">
+                        <hr style="background-color: #a32626;height: 2px;">
                         <form class="user" action="RegistroControl" method="post">
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -80,11 +80,11 @@
                                     <input type="password" id="password" class="form-control form-control-user" name="password" placeholder="Contraseña" required>
                                 </div>
                             </div>
-                            <button type="submit" style="background-color: #5ad1f5;" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" style="background-color: #a32626;" class="btn btn-primary btn-user btn-block">
                                 Registrar Cuenta
                             </button>
                             <hr>
-                            <a href="https://accounts.google.com" style="background-color: #e79a41;;border-color: #6becff;border-radius: 23px;margin-bottom: 12px;" class="btn btn-google btn-user btn-block">
+                            <a href="https://accounts.google.com" style="background-color: #31302b;;border-color: #31302b;border-radius: 23px;margin-bottom: 12px;" class="btn btn-google btn-user btn-block">
                                 <i class="fab fa-google fa-fw"></i> Registrarse con Google
                             </a>
                         </form>

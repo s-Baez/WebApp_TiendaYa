@@ -1,58 +1,70 @@
-<%--
+<%@ page import="Model.Usuario" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %><%--
   Created by IntelliJ IDEA.
   User: sadit
-  Time: 5:02
+  Date: 01/11/2024
+  Time: 3:20
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %>
-<%@ page import="Model.UsuarioData" %>
-<%@ page import="DAO.UsuarioDataDAO" %>
-<%@ page import="Controller.ListaUsuariosControl" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.net.URLEncoder" %>
-<%@ page import="Model.Usuario" %>
-<%@ page import="jakarta.servlet.http.HttpSession" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    Usuario usuario1 = null;
+    Usuario usuario = null;
     if (session != null) {
-        usuario1 = (Usuario) session.getAttribute("usuario");
+        usuario = (Usuario) session.getAttribute("usuario");
     }
-    if (usuario1 == null) {
+    if (usuario == null) {
         response.sendRedirect("index.jsp");
         return;
     }
 %>
-<%
-
-    UsuarioDataDAO usuarioDataDAO = new UsuarioDataDAO();
-    List<UsuarioData> usuariosLista = UsuarioDataDAO.listarUsuarios();
-%>
-
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Usuarios</title>
-    <link href="vendor/all.min.css" rel="stylesheet" type="text/css">
+
+    <title> Registro Exitoso </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
+
+
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="vendor/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" href="images/homeware.png" type="image/x-icon">
+
 </head>
+<style>
+
+    .alert-custom {
+        border: 5px solid green;
+        padding: 30px;
+        font-size: 1.25rem;
+        text-align: center;
+    }
+    .alert-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+    .alert-custom img {
+        max-width: 100px;
+        margin-bottom: 20px;
+    }
+</style>
 
 <body id="page-top">
 
 <div id="wrapper">
-
     <!---------------------------------- Barra de Accesos ------------------------------>
     <ul style="background-color: #a32626;" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicio.jsp">
@@ -147,7 +159,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
                     <%
-            if ("Administrador".equals(usuario1.getRol())) {
+            if ("Administrador".equals(usuario.getRol())) {
           %>
           <a class="collapse-item" href="archivos.jsp">Archivos</a>
           <%
@@ -172,8 +184,8 @@
                     <h6 class="collapse-header">Acciones:</h6>
                     <%
 
-            if (usuario1 != null) {
-              if ("Administrador".equals(usuario1.getRol())) {
+            if (usuario != null) {
+              if ("Administrador".equals(usuario.getRol())) {
           %>
           <a class="collapse-item" href="UsuarioNuevo.jsp">Nuevo Usuario</a>
           <a class="collapse-item" href="Usuarios.jsp">Lista de usuarios</a>
@@ -373,12 +385,10 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <%
-                                Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
-                                if (usuarioSesion != null) {
+
+                                if (usuario != null) {
                             %>
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                 <%= usuarioSesion.getNombre() %> <%= usuarioSesion.getApellido() %>
-                            </span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <%= usuario.getNombre() %> <%= usuario.getApellido() %></span>
                             <%
                                 }
                             %>
@@ -413,122 +423,50 @@
 
             </nav>
             <!---------------------------------- Fin de Barra de Accesos ------------------------------>
-            <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="card shadow mb-4" style="border-radius: 28px;">
-                    <div class="card-header py-3" style="
-    height: 54px;
-    background-color: #b75b5b;
-    color: #5a7777;
-    font-family: cursive;
-">
-                        <h4 class="m-0 font-weight-bold text-primary">Tabla de Usuarios</h4>
-                    </div>
-                    <div class="card-body" style="font-family: cursive; display: flex; align-items: center;">
-                        <div style="flex: 1;">
-                            <p>Esta sección presenta a los usuarios que tienen acceso al gestor de inventarios de Republica Café . Cada usuario registrado cuenta con permisos específicos para gestionar, actualizar y consultar el inventario, asegurando que solo las personas autorizadas puedan realizar modificaciones. La correcta administración de estos accesos es clave para mantener la seguridad y el control dentro del sistema, evitando errores y accesos no deseados.</p>
-                        </div>
-                        <div style="margin-left: 20px;">
-                            <img src="images/8.png" alt="Descripción de la imagen" style="width: 200px; height: auto;">
-                        </div>
-                    </div>
+
+
+            <!-- Begin Page Content -->
+            <div class="alert-container">
+                <!-- Mensaje de éxito -->
+                <div class="alert alert-custom alert-success" role="alert">
+                    <img src="images/exito.png" alt="Icono de éxito">
+                    ¡Éxito! Los datos se han guardado correctamente.
+                    <br><br>
+                    <a onclick="goBack()" class="btn btn-success mt-3">Hacer un nuevo registro</a>
                 </div>
-                <!-- div de concepto -->
-
-                <div class="card shadow mb-4" style="border-radius: 28px;">
-                    <div class="card-header py-3" style="
-    height: 54px;
-    background-color: #b75b5b;
-    color: #5a7777;
-    font-family: cursive;
-">
-                        <h6 class="m-0 font-weight-bold text-primary">Lista de Usuarios</h6>
-                    </div>
-                    <div class="card-body" style="
-    background-color: #ebacad;
-">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>DNI</th>
-                                    <th>Email</th>
-                                    <th>Rol</th>
-                                    <th>Fecha Creación</th>
-                                    <th>Acciones</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <%
-                                    if (usuariosLista == null || usuariosLista.isEmpty()) {
-                                %>
-                                <tr>
-                                    <td colspan="8">No hay usuarios disponibles</td>
-                                </tr>
-                                <%
-                                } else {
-                                    for (UsuarioData usuario : usuariosLista) {
-                                %>
-                                <tr>
-                                    <td><%= usuario.getId() %></td>
-                                    <td><%= usuario.getNombre() %></td>
-                                    <td><%= usuario.getApellido() %></td>
-                                    <td><%= usuario.getDni() %></td>
-                                    <td><%= usuario.getEmail() %></td>
-                                    <td><%= usuario.getRol() %></td>
-                                    <td><%= usuario.getFechacreacion() != null ? usuario.getFechacreacion() : "N/A" %></td>
-                                    <td>
-                                        <div class="action" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-                                            <a class="btnac" href="#" title="Editar">
-                                                <i class="fas fa-pencil-alt fa-sm"></i>
-                                            </a>
-                                            <a class="btnac" href="javascript:void(0);" title="Eliminar"
-                                               onclick="eliminarUsuario('<%= URLEncoder.encode(String.valueOf(usuario.getId()), "UTF-8") %>');">
-                                                <i class="fas fa-trash-alt fa-sm"></i>
-                                            </a>
-
-                                            <script>
-                                                function eliminarUsuario(idUsuario) {
-                                                    const encodedId = encodeURIComponent(idUsuario);
-                                                    const deleteUrl = `EliminarUsuarioControl?id=${encodedId}`;
-
-                                                    if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
-                                                        window.location.href = deleteUrl;
-                                                    }
-                                                }
-                                            </script>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <%
-                                }
-                                    }
-                                %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
+                <script>
+                    function goBack() {
+                        history.back();
+                    }
+                </script>
             </div>
-        </div>
+            <!-- /.container-fluid -->
 
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright  2024</span>
+                    <span>Copyright &copy; Republica Café 2024</span>
                 </div>
             </div>
         </footer>
+        <!-- End of Footer -->
+
     </div>
+    <!-- End of Content Wrapper -->
+
 </div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
+
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -551,18 +489,17 @@
         </div>
     </div>
 </div>
-<script src="vendor/jquery.min.js"></script>
 
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<script src="vendor/bootstrap.bundle.min.js"></script>
-<script src="vendor/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
 
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="js/datatables-demo.js"></script>
 </body>
-</html>
 
+</html>

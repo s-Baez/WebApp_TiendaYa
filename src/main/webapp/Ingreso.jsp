@@ -11,6 +11,18 @@
 <%@ page import="Model.Ingreso" %>
 <%@ page import="DAO.IngresoDAO" %>
 <%@ page import="Controller.ListaIngresosControl" %>
+<%@ page import="Model.Usuario" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
+<%
+    Usuario usuario = null;
+    if (session != null) {
+        usuario = (Usuario) session.getAttribute("usuario");
+    }
+    if (usuario == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+%>
 <%
     IngresoDAO ingresoDAO = new IngresoDAO();
     List<Ingreso> ingresos = ingresoDAO.listarIngresosConNombreProducto();
@@ -32,7 +44,7 @@
     <link href="vendor/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" href="images/1.png" type="image/x-icon">
+    <link rel="icon" href="images/homeware.png" type="image/x-icon">
 </head>
 
 <body id="page-top">
@@ -40,7 +52,7 @@
 <div id="wrapper">
 
     <!---------------------------------- Barra de Accesos ------------------------------>
-    <ul style="background-color: #17A5D0;" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul style="background-color: #a32626;" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicio.jsp">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
@@ -129,15 +141,20 @@
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Exportar</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
-                 data-parent="#accordionSidebar">
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Ventas </a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Proveedores</a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Usuarios</a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Productos</a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Ingresos</a>
+                    <%
+                        if ("Administrador".equals(usuario.getRol())) {
+                    %>
+                    <a class="collapse-item" href="archivos.jsp">Archivos</a>
+                    <%
+                    } else {
+                    %>
+                    <a class="collapse-item" href="SinAcceso.jsp">Archivos</a>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </li>
@@ -147,12 +164,32 @@
                 <i class="fas fa-fw fa-wrench"></i>
                 <span>Usuarios</span>
             </a>
-            <div id="collapseuser" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
+            <div id="collapseuser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
+                    <%
+
+                        if (usuario != null) {
+                            if ("Administrador".equals(usuario.getRol())) {
+                    %>
+                    <a class="collapse-item" href="UsuarioNuevo.jsp">Nuevo Usuario</a>
+                    <a class="collapse-item" href="Usuarios.jsp">Lista de usuarios</a>
+                    <%
+                    } else {
+                    %>
+
                     <a class="collapse-item" href="SinAcceso.jsp">Nuevo Usuario</a>
                     <a class="collapse-item" href="SinAcceso.jsp">Lista de usuarios</a>
+                    <%
+                        }
+                    } else {
+                    %>
+
+                    <a class="collapse-item" href="SinAcceso.jsp">Nuevo Usuario</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de usuarios</a>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </li>
@@ -174,14 +211,14 @@
         <!-- Main Content -->
         <div id="content">
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="border-bottom: 3px solid #17A5D0;">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="border-bottom: 3px solid #a32626;">
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
                 <div class="text-center" style="position: relative">
-                    <img src="images/tiendayalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;margin-left: 360px;">
+                    <img src="images/republicalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;margin-left: 360px;">
                 </div>
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -215,7 +252,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
-                            <span class="badge badge-danger badge-counter">3+</span>
+                            <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Alerts -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -266,7 +303,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
+                            <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -332,7 +369,15 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Juan Torres</span>
+                            <%
+
+                                if (usuario != null) {
+                            %>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <%= usuario.getNombre() %> <%= usuario.getApellido() %></span>
+                            <%
+                                }
+                            %>
+
                             <img class="img-profile rounded-circle"
                                  src="images/undraw_profile.svg">
                         </a>
@@ -367,13 +412,18 @@
 
             <div class="container-fluid">
                 <!-- Page Heading -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
+                <div class="card shadow mb-4" style="border-radius: 28px;">
+                    <div class="card-header py-3" style="
+    height: 54px;
+    background-color: #b75b5b;
+    color: #5a7777;
+    font-family: cursive;
+">
                         <h4 class="m-0 font-weight-bold text-primary">Tabla de Ingresos</h4>
                     </div>
                     <div class="card-body" style="font-family: cursive; display: flex; align-items: center;">
                         <div style="flex: 1;">
-                            <p>En TiendaYa, mantenemos un control estricto sobre los ingresos de inventarios para asegurar que nuestros productos siempre estén disponibles para satisfacer las demandas de nuestros clientes. Cada vez que un nuevo lote de mercancía llega a nuestro almacén, registramos de manera precisa los detalles, como la fecha de ingreso, el nombre del producto, la cantidad recibida y el valor total del lote.</p>
+                            <p>En Republica Café , mantenemos un control estricto sobre los ingresos de inventarios para asegurar que nuestros productos siempre estén disponibles para satisfacer las demandas de nuestros clientes. Cada vez que un nuevo lote de mercancía llega a nuestro almacén, registramos de manera precisa los detalles, como la fecha de ingreso, el nombre del producto, la cantidad recibida y el valor total del lote.</p>
                         </div>
                         <div style="margin-left: 20px;">
                             <img src="images/3.png" alt="Descripción de la imagen" style="width: 200px; height: auto;">
@@ -383,8 +433,13 @@
                 <!-- div de concepto -->
 
                 <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
+                <div class="card shadow mb-4" style="border-radius: 28px;">
+                    <div class="card-header py-3" style="
+    height: 54px;
+    background-color: #b75b5b;
+    color: #5a7777;
+    font-family: cursive;
+">
                         <h6 class="m-0 font-weight-bold text-primary">Ingresos</h6>
                     </div>
                     <div class="card-body" style="background-color: #ebbe9b;font-family: cursive;">
@@ -448,20 +503,24 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
+<!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Seguro de Salir?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">¿Seguro que deseas salir?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Selecciona Salir si estas seguro de la accion</div>
+            <div class="modal-body">Selecciona "Cerrar sesión" abajo si estás listo para terminar tu sesión actual.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Salir</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+
+                <form action="CerrarSesionServlet" method="POST">
+                    <button type="submit" class="btn btn-primary">Cerrar sesión</button>
+                </form>
             </div>
         </div>
     </div>

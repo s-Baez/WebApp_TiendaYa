@@ -3,9 +3,10 @@
   Created by IntelliJ IDEA.
   User: sadit
   Date: 01/11/2024
-  Time: 3:25
+  Time: 3:20
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   Usuario usuario = null;
@@ -27,15 +28,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Error de permisos</title>
+
+  <title> Error en Registro  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
+
+
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/SinAcceso.css">
   <link rel="icon" href="images/homeware.png" type="image/x-icon">
+
 </head>
+<style>
+  .alert-custom {
+    border: 5px solid red;
+    padding: 30px;
+    font-size: 1.25rem;
+    text-align: center;
+  }
+  .alert-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  .alert-custom img {
+    max-width: 100px;
+    margin-bottom: 20px;
+  }
+</style>
+
 <body id="page-top">
 
 <div id="wrapper">
@@ -399,19 +424,22 @@
 
 
 
+
       <!-- Begin Page Content -->
-      <div class="container-fluid">
-
-        <div class="text-center" style="text-align: center !important;display: flex;justify-content: center;align-items: center;flex-direction: column;padding-top: 142px;">
-          <div class="lock"></div>
-          <div class="message">
-            <h1>Acceso a esta funcion esta limitado</h1>
-            <p>Consulta con un Administrador si crees que hay un error.</p>
-            <a href="inicio.html">&larr; Volver al inicio</a>
-          </div>
+      <div class="alert-container">
+        <!-- Mensaje de error -->
+        <div class="alert alert-custom alert-danger" role="alert">
+          <img src="images/error.png" alt="Icono de error">
+          ¡Error! Ocurrió un problema al registrar los datos.
+          <br><br>
+          <button class="btn btn-danger mt-3" onclick="goBack()">Intentar de nuevo</button>
         </div>
-
       </div>
+      <script>
+        function goBack() {
+          history.back();
+        }
+      </script>
       <!-- /.container-fluid -->
 
     </div>
@@ -461,12 +489,16 @@
   </div>
 </div>
 
+<!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 
 </html>
-

@@ -5,8 +5,20 @@
   Time: 3:20
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="Model.Usuario" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    Usuario usuario = null;
+    if (session != null) {
+        usuario = (Usuario) session.getAttribute("usuario");
+    }
+    if (usuario == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,14 +39,14 @@
 
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="icon" href="images/1.png" type="image/x-icon">
+    <link rel="icon" href="images/homeware.png" type="image/x-icon">
 </head>
 
 <body id="page-top">
 
 <div id="wrapper">
     <!---------------------------------- Barra de Accesos ------------------------------>
-    <ul style="background-color: #17A5D0;" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul style="background-color: #a32626;" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicio.jsp">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
@@ -123,15 +135,20 @@
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Exportar</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
-                 data-parent="#accordionSidebar">
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Ventas </a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Proveedores</a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Usuarios</a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Productos</a>
-                    <a class="collapse-item" href="SinAcceso.jsp">Lista de Ingresos</a>
+                    <%
+                        if ("Administrador".equals(usuario.getRol())) {
+                    %>
+                    <a class="collapse-item" href="archivos.jsp">Archivos</a>
+                    <%
+                    } else {
+                    %>
+                    <a class="collapse-item" href="SinAcceso.jsp">Archivos</a>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </li>
@@ -141,12 +158,32 @@
                 <i class="fas fa-fw fa-wrench"></i>
                 <span>Usuarios</span>
             </a>
-            <div id="collapseuser" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
+            <div id="collapseuser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
+                    <%
+
+                        if (usuario != null) {
+                            if ("Administrador".equals(usuario.getRol())) {
+                    %>
+                    <a class="collapse-item" href="UsuarioNuevo.jsp">Nuevo Usuario</a>
+                    <a class="collapse-item" href="Usuarios.jsp">Lista de usuarios</a>
+                    <%
+                    } else {
+                    %>
+
                     <a class="collapse-item" href="SinAcceso.jsp">Nuevo Usuario</a>
                     <a class="collapse-item" href="SinAcceso.jsp">Lista de usuarios</a>
+                    <%
+                        }
+                    } else {
+                    %>
+
+                    <a class="collapse-item" href="SinAcceso.jsp">Nuevo Usuario</a>
+                    <a class="collapse-item" href="SinAcceso.jsp">Lista de usuarios</a>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </li>
@@ -168,14 +205,14 @@
         <!-- Main Content -->
         <div id="content">
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="border-bottom: 3px solid #17A5D0;">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="border-bottom: 3px solid #a32626;">
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
                 <div class="text-center" style="position: relative">
-                    <img src="images/tiendayalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;margin-left: 360px;">
+                    <img src="images/republicalogo.png" alt="Descripción de la imagen" class="mb-4" style="width: 200px; height: auto;margin-left: 360px;">
                 </div>
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -209,7 +246,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
-                            <span class="badge badge-danger badge-counter">3+</span>
+                            <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Alerts -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -260,7 +297,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
+                            <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -364,10 +401,12 @@
             <div class="container-fluid">
                 <div class="container mt-5" style="max-width: 600px;">
                     <div class="card shadow">
-                        <div class="card-header" style="background-color: #FFA25B; color: white;">
+                        <div class="card-header" style="background-color: #a32626; color: white;text-align: center">
                             <h4 class="m-0">Registrar Ingreso</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="
+    background-color: #d1ccc8;
+">
                             <form action="RegistrarIngresoControl" method="post">
                                 <div class="form-group">
                                     <label for="fecha">Fecha:</label>
@@ -404,7 +443,7 @@
                                     <input type="number" step="0.01" id="total" name="total" class="form-control" readonly>
                                 </div>
 
-                                <button type="submit" class="btn btn-block" style="background-color: #FFA25B; color: white;">Registrar Ingreso</button>
+                                <button type="submit" class="btn btn-block" style="background-color: #a32626; color: white;">Guardar Ingreso</button>
                             </form>
                         </div>
                     </div>
@@ -434,6 +473,20 @@
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">¿Seguro que deseas salir?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Selecciona "Cerrar sesión" abajo si estás listo para terminar tu sesión actual.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+
+                        <form action="CerrarSesionServlet" method="POST">
+                            <button type="submit" class="btn btn-primary">Cerrar sesión</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -441,7 +494,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; TiendaYa! 2020</span>
+                    <span>Copyright &copy; Republica Café  </span>
                 </div>
             </div>
         </footer>

@@ -1,14 +1,14 @@
 package DAO;
 
 import Model.Usuario;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class UsuarioDAO {
@@ -95,6 +95,28 @@ public class UsuarioDAO {
         }
 
         return listaUsuarios;
+    }
+    public List<Map<String, Object>> getAllUsuarios() {
+        List<Map<String, Object>> usuarios = new ArrayList<>();
+        String sql = "SELECT nombre, apellido, dni, email, rol FROM usuario";
+
+        try (Connection conn = Conexion.conectar();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                row.put("Nombre", rs.getString("nombre"));
+                row.put("Apellido", rs.getString("apellido"));
+                row.put("DNI", rs.getString("dni"));
+                row.put("Correo", rs.getString("email"));
+                row.put("Rol", rs.getString("rol"));
+                usuarios.add(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return usuarios;
     }
 
 

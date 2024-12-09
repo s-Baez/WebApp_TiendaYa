@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin 2 - Login</title>
+    <title>Ingreso Café Republica</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="icon" href="images/1.png" type="image/x-icon">
+    <link rel="icon" href="images/homeware.png" type="image/x-icon">
 </head>
 <style>
     body {
@@ -25,21 +25,21 @@
     }
     @media (min-width: 1024px) {
         body {
-            background-image: url('images/fondo1400.png');
+            background-image: url('images/republicafondo.png');
         }
     }
     @media (min-width: 768px) and (max-width: 1023px) {
         body {
-            background-image: url('images/fondo1400.png');
+            background-image: url('images/republicafondo.png');
         }
     }
     @media (max-width: 767px) {
         body {
-            background-image: url('images/fondo1400.png');
+            background-image: url('images/republicafondo.png');
         }
     }
 </style>
-<body class="bg-gradient-primary" style="background-image: url('images/fondo1400.png');" >
+<body class="bg-gradient-primary" style="background-image: url('images/republicafondo.png');" >
 <div class="container" style="padding-right: 4.5rem;width: 620px;">
     <div class="row justify-content-center">
 
@@ -52,11 +52,11 @@
                         <div class="col-lg-6">
                             <div class="p-5" style="width: 400px;margin-left: 0px;" >
                                 <div class="text-center">
-                                    <img src="images/tiendayalogo.png" alt="logo" class="mb-4" style="width: 200px; height: auto;margin-bottom: 0rem !important;">
+                                    <img src="images/republicalogo.png" alt="logo" class="mb-4" style="width: 200px; height: auto;margin-bottom: 0rem !important;">
                                 </div>
-                                <hr style="background-color: #5ad1f5;height: 2px;">
-                                <hr style="background-color: #5ad1f5;height: 2px;">
-                                <a href="https://accounts.google.com" style="background-color: #e79a41;;border-color: #6becff;border-radius: 23px;margin-bottom: 12px;" class="btn btn-primary btn-user btn-block">
+                                <hr style="background-color: #a32626;height: 2px;">
+                                <hr style="background-color: #a32626;height: 2px;">
+                                <a href="https://accounts.google.com" style="background-color:#31302b;;border-color: #31302b;border-radius: 23px;margin-bottom: 12px;" class="btn btn-primary btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Iniciar sesión con Google
                                 </a>
                                 <form class="user" action="IngresoControl" method="POST">
@@ -75,7 +75,7 @@
                                             <label class="custom-control-label" for="customCheck">Recordarme</label>
                                         </div>
                                     </div>
-                                    <button type="submit" style="background-color: #5ad1f5;" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" style="background-color: #a32626;" class="btn btn-primary btn-user btn-block">
                                         Iniciar Sesión
                                     </button>
                                 </form>
@@ -84,7 +84,7 @@
                                     <a class="small" href="Inicio.jsp">Olvidaste tu contraseña?</a>
                                     <hr>
                                     <a class="small" >¿No tienes una cuenta?</a>
-                                    <a href="registro.jsp" style="background-color: #e79a41;;border-radius: 23px;" class="btn btn-primary btn-user btn-block">
+                                    <a href="registro.jsp" style="background-color: #31302b;;border-radius: 23px;" class="btn btn-primary btn-user btn-block">
                                          Crear Cuenta
                                     </a>
                                 </div>

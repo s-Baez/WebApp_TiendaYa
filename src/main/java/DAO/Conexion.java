@@ -1,16 +1,11 @@
-
 package DAO;
-
 import java.sql.*;
-
 public class Conexion {
     private static final String URL = "jdbc:mysql://localhost:3306/tiendaya?zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASS = "";
-
     public Conexion() {
     }
-
     public static Connection conectar() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -55,43 +50,5 @@ public class Conexion {
         }
     }
 
-    public int consultaTotalVentas() throws SQLException {
-        String query = "SELECT COUNT(*) AS totalVentas FROM ventas";
-        try (Connection con = conectar(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                return rs.getInt("totalVentas");
-            }
-        }
-        return 0;
-    }
 
-    public double consultaSumaPrecioTotalVentas() throws SQLException {
-        String query = "SELECT SUM(precio_total) AS sumaPrecioTotalVentas FROM ventas";
-        try (Connection con = conectar(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                return rs.getDouble("sumaPrecioTotalVentas");
-            }
-        }
-        return 0.0;
-    }
-
-    public int consultaCantidadIngresos() throws SQLException {
-        String query = "SELECT COUNT(*) AS cantidadIngresos FROM ingresos";
-        try (Connection con = conectar(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                return rs.getInt("cantidadIngresos");
-            }
-        }
-        return 0;
-    }
-
-    public int consultaCantidadUsuarios() throws SQLException {
-        String query = "SELECT COUNT(*) AS cantidadUsuarios FROM usuarios";
-        try (Connection con = conectar(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                return rs.getInt("cantidadUsuarios");
-            }
-        }
-        return 0;
-    }
 }

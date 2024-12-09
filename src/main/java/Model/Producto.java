@@ -20,6 +20,7 @@ public class Producto {
         this.imagen = imagen;
     }
 
+
     public int getId() { return id; }
     public String getNombre() { return nombre; }
     public String getTamano() { return tamano; }

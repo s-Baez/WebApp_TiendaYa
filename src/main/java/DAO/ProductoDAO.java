@@ -2,7 +2,10 @@ package DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import Model.Producto;
 
 public class ProductoDAO {
@@ -69,5 +72,41 @@ public class ProductoDAO {
             e.printStackTrace();
         }
         return registroExitoso;
+    }
+    public boolean eliminarProducto(int idProducto) {
+        String sql = "DELETE FROM productos WHERE id = ?";
+        try (Connection connection = Conexion.conectar();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, idProducto);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar producto: " + e.getMessage());
+            e.printStackTrace(System.err);
+            return false;
+        }
+    }
+    public List<Map<String, Object>> getAllProductos() {
+        List<Map<String, Object>> productos = new ArrayList<>();
+        String sql = "SELECT id, nombre, tamano, precio, stock, categoria_id, imagen FROM productos";
+
+        try (Connection conn = Conexion.conectar();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                row.put("ID", rs.getInt("id"));
+                row.put("Nombre", rs.getString("nombre"));
+                row.put("Tamano", rs.getString("tamano"));
+                row.put("Precio", rs.getDouble("precio"));
+                row.put("Stock", rs.getString("stock"));
+                row.put("Categoria ID", rs.getInt("categoria_id"));
+                row.put("Imagen", rs.getString("imagen"));
+                productos.add(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productos;
     }
 }

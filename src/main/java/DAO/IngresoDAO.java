@@ -2,7 +2,10 @@ package DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import Model.Ingreso;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,5 +59,30 @@ public class IngresoDAO {
             logger.error("Error al insertar ingreso: ", e);
             throw new SQLException("Error al insertar ingreso: " + e.getMessage(), e);
         }
+    }
+    public List<Map<String, Object>> getAllIngresos() {
+        List<Map<String, Object>> ingresos = new ArrayList<>();
+        String sql = "SELECT id_ingreso, fecha, cantidad, id, id_proveedor, id_usuario, precio_unitario, total FROM ingresos";
+
+        try (Connection conn = Conexion.conectar();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                row.put("ID_Ingreso", rs.getInt("id_ingreso"));
+                row.put("Fecha", rs.getDate("fecha").toString());
+                row.put("Cantidad", rs.getInt("cantidad"));
+                row.put("ID", rs.getInt("id"));
+                row.put("ID_Proveedor", rs.getObject("id_proveedor") != null ? rs.getInt("id_proveedor") : "No disponible");
+                row.put("ID_Usuario", rs.getObject("id_usuario") != null ? rs.getInt("id_usuario") : "No disponible");
+                row.put("Precio_Unitario", rs.getObject("precio_unitario") != null ? rs.getDouble("precio_unitario") : "No disponible");
+                row.put("Total", rs.getObject("total") != null ? rs.getDouble("total") : "No disponible");
+                ingresos.add(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Manejo de excepciones
+        }
+        return ingresos;
     }
 }

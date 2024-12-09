@@ -1,12 +1,13 @@
 package DAO;
 
 import Model.Proveedor;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 public class ProveedorDAO {
@@ -58,4 +59,41 @@ public class ProveedorDAO {
             return false;
         }
     }
+    public void eliminarProveedor(String id) {
+        String sql = "DELETE FROM proveedor WHERE id_proveedor = ?";
+        try (Connection conn = Conexion.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public List<Map<String, Object>> getAllProveedores() {
+        List<Map<String, Object>> proveedores = new ArrayList<>();
+        String sql = "SELECT id_proveedor, nombre, contacto, telefono, email, direccion, distrito, ruc FROM proveedor";
+
+        try (Connection conn = Conexion.conectar();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                row.put("ID", rs.getInt("id_proveedor"));
+                row.put("Nombre", rs.getString("nombre"));
+                row.put("Contacto", rs.getString("contacto") != null ? rs.getString("contacto") : "No disponible");
+                row.put("Telefono", rs.getString("telefono") != null ? rs.getString("telefono") : "No disponible");
+                row.put("Email", rs.getString("email") != null ? rs.getString("email") : "No disponible");
+                row.put("Direccion", rs.getString("direccion") != null ? rs.getString("direccion") : "No disponible");
+                row.put("Distrito", rs.getString("distrito") != null ? rs.getString("distrito") : "No disponible");
+                row.put("RUC", rs.getString("ruc"));
+
+                proveedores.add(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return proveedores;
+    }
+
 }

@@ -14,10 +14,8 @@ public class RegistrarProductoControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Establecer el tipo de codificación
-        request.setCharacterEncoding("UTF-8");
 
-        // Obtener los parámetros del formulario
+        request.setCharacterEncoding("UTF-8");
         String nombre = request.getParameter("nombre");
         String tamano = request.getParameter("tamano");
         double precio = Double.parseDouble(request.getParameter("precio"));
@@ -31,10 +29,10 @@ public class RegistrarProductoControl extends HttpServlet {
 
         if (registroExitoso) {
 
-            response.sendRedirect("ProductoNuevo.jsp?mensaje=registro_exitoso");
+            response.sendRedirect("correctoregistro.jsp?mensaje=registro_exitoso");
         } else {
 
-            response.sendRedirect("404.jsp?mensaje=registro_fallido");
+            response.sendRedirect("errorregistro.jsp?mensaje=registro_fallido");
         }
     }
 }
